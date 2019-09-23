@@ -31,7 +31,7 @@
                                     </select>
                                 </td>
                                 <td>
-                                    <input type="text" id="x" readonly>
+                                    <label id="x" ></label>
                                     <label for="jumlah">Jumlah :</label>
                                 </td>
                                 <td><input type="number" id="jumlah" min="1" max="10" required></td>
@@ -42,28 +42,40 @@
                 </div>
             </div>
             
-            <div class="listItem">
-                    
-                            <table class="table">
-                                <thead class="thead-dark">
-                                    <tr>
-                                        <td>Nama Barang</td>
-                                        <td>Harga</td>
-                                        <td>Jumlah</td>
-                                        <td>Total</td>
-                                    </tr>
-                                </thead>
-                                <tbody id="daftarPesanan">
+            <div class="listItem">     
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <td>Nama Barang</td>
+                            <td>Harga</td>
+                            <td>Jumlah</td>
+                            <td>Total</td>
+                        </tr>
+                    </thead>
+                    <tbody id="daftarPesanan">
 
-                                </tbody>
-                            </table>
-                            <label for="totalSementara">Grand Total :</label>
-                            <input id="totalSementara" type="text" readonly>
-                            <label for="diskon">Diskon:</label>
-                            <input id="diskon" type="number" >
-                            <label for="sisa">Total Keseluruhan :</label>
-                            <input id="sisa" type="number" readonly>
-                            <button type="button" name="jumlah" id="jumlahKeseluruhan">Jumlah</button>
+                    </tbody>
+                </table>
+
+                <ul class="detail">
+                    <li>
+                        <label for="totalSementara">Grand Total :</label><br>
+                        <input id="totalSementara" type="text" readonly>
+                    </li>
+                    <li>
+                        <label for="diskon">Diskon:</label><br>
+                        <input id="diskon" type="number" min="1" max="100">
+                    </li>
+                    <li>
+                        <label for="sisa">Total Keseluruhan :</label><br>
+                        <input id="sisa" type="number" readonly>
+                    </li>
+                    <li>
+                        <label for="jumlah-uang">Jumlah Uang :</label>
+                        <input id="jumlah-uang" type="text">
+                    </li>
+                    <li><button type="button" name="jumlah" id="jumlahKeseluruhan">Jumlah</button></li>
+                </ul>    
             </div>    
         </main>
         <footer>

@@ -23,6 +23,16 @@ nav .logo {
     font-weight: bold;
 }
 
+.detail {
+    width: 100px;
+}
+
+.detail li{
+    font-size: 15px;
+    list-style: none;
+    margin: 20px 0;
+}
+
 
 
 

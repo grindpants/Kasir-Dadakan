@@ -5,16 +5,12 @@ var total = document.getElementById("jumlahKeseluruhan");
 
 document.getElementById("jumlah").value = "";
 
-
-
-
 pilih.addEventListener('click', function(){
     
     var nilai = document.getElementById("barang").value;
     var jumlah = document.getElementById("jumlah").value;
     var x = document.getElementById("x");
-    x.value = nilai;
-    
+    x.innerHTML = nilai;
     
 });
 
@@ -23,28 +19,22 @@ tambah.addEventListener('click', function(){
     var namaBarang = document.querySelectorAll("#barang option");
     var nilai = document.getElementById("barang").value;
     var jumlah = document.getElementById("jumlah").value;
-    var harga = document.getElementById("x").value;
-    var totalKeseluruhan = document.getElementById("totalSementara");
-    
-
-    
 
     var NewRow = daftarPesanan.insertRow(-1); 
     var Newcell1 = NewRow.insertCell(0); 
     var Newcell2 = NewRow.insertCell(1);
     var Newcell3 = NewRow.insertCell(2);
     var Newcell4 = NewRow.insertCell(3);
-    
-
-    
+        
     for(let i = 0; i < namaBarang.length; i++){
         if(nilai === namaBarang[i].value){
             // insert new row. 
             Newcell1.innerHTML = namaBarang[i].innerHTML;
             Newcell2.innerHTML = nilai;
             Newcell3.innerHTML = jumlah;
-            Newcell4.innerHTML = harga*jumlah;
-            Newcell4.value = harga*jumlah;
+            Newcell4.innerHTML = nilai*jumlah;
+            Newcell4.value = nilai*jumlah;
+
         }
         
     } 
@@ -70,12 +60,13 @@ total.addEventListener('click', function() {
     var total = document.getElementById("totalSementara");
     var nilaiDiskon = document.getElementById("diskon");
     var totalKeseluruhan = document.getElementById("sisa");
+    var uang = document.getElementById("jumlah-uang");
     var nilaiDiskon ;
-    if (nilaiDiskon.value == 0) {
+    if (nilaiDiskon.value < 1) {
         totalKeseluruhan.value = Number(total.value)
     } else {
         nilaiDiskon = (Number(total.value) * nilaiDiskon.value) / 100;
-        totalKeseluruhan.value = Number(total.value) - nilaiDiskon;
+        totalKeseluruhan.value = Number(total.value) - nilaiDiskon - uang;
     }         
 });
 
