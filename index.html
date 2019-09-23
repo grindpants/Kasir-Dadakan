@@ -4,161 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> 
     <link rel="stylesheet" href="style/style.css">
     <title>Document</title>
 </head>
 <body>
     <nav>
-        <div class="menu2">
-            <h1>menu2</h1>
+        <div class="logo">
+            <h1>Kasir Dadakan</h1>
         </div>
     </nav>
-    <main>
-        <div class="listItem">
-                <fieldset>
-                    <p>
-                        <select name="" id="barang" required>
-                            <option value="">----pilih barang-----</option>
-                            <option value="30000">Nescafe</option>
-                            <option value="15000">Sariroti</option>
-                            <option value="8000">Gulaku</option>
-                            <option value="5000">Oreo</option>
-                            <option value="2500">Indomie</option>
-                        </select>
-        
-                        <input type="text" id="x" readonly>
-                        <label for="jumlah">Jumlah :</label>
-                        <input type="number" id="jumlah" min="1" max="10" required>
-        
-                        <button type="button" name="add" id="add" >Tambah</button>
-                        <button type="button" name="delete" id="delete" >Hapus</button>
-                    </p>
-                    <p>
-                        <table style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <td>Nama Barang</td>
-                                    <td>Harga</td>
-                                    <td>Jumlah</td>
-                                    <td>Total</td>
-                                </tr>
-                            </thead>
-                            <tbody style="height: 50%;" id="daftarPesanan">
-                            </tbody>
+    <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                        <table class="table">
+                            <tr>
+                                <td>
+                                    <select name="" id="barang" required>
+                                        <option value="">----pilih barang-----</option>
+                                        <option value="30000">Nescafe</option>
+                                        <option value="15000">Sariroti</option>
+                                        <option value="8000">Gulaku</option>
+                                        <option value="5000">Oreo</option>
+                                        <option value="2500">Indomie</option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" id="x" readonly>
+                                    <label for="jumlah">Jumlah :</label>
+                                </td>
+                                <td><input type="number" id="jumlah" min="1" max="10" required></td>
+                                <td><button type="button" name="add" id="add" >Tambah</button></td>
+                                <td><button type="button" name="delete" id="delete" >Hapus</button></td>
+                            </tr>
                         </table>
-                    </p>
-                    <p>
-                        <label for="totalSementara">Grand Total :</label>
-                        <input id="totalSementara" type="text" readonly>
-                        <label for="diskon">Diskon:</label>
-                        <input id="diskon" type="number" >
-                        <label for="sisa">Total Keseluruhan :</label>
-                        <input id="sisa" type="number" readonly>
-                        <button type="button" name="jumlah" id="jumlahKeseluruhan">Jumlah</button>
-                    </p>
-                </fieldset>
-        </div>    
-    </main>
-    <footer>
+                </div>
+            </div>
+            
+            <div class="listItem">
+                    
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <td>Nama Barang</td>
+                                        <td>Harga</td>
+                                        <td>Jumlah</td>
+                                        <td>Total</td>
+                                    </tr>
+                                </thead>
+                                <tbody id="daftarPesanan">
+
+                                </tbody>
+                            </table>
+                            <label for="totalSementara">Grand Total :</label>
+                            <input id="totalSementara" type="text" readonly>
+                            <label for="diskon">Diskon:</label>
+                            <input id="diskon" type="number" >
+                            <label for="sisa">Total Keseluruhan :</label>
+                            <input id="sisa" type="number" readonly>
+                            <button type="button" name="jumlah" id="jumlahKeseluruhan">Jumlah</button>
+            </div>    
+        </main>
+        <footer>
             <div class="copyRight">
                 <h1>copyright</h1>
             </div>
-     </footer>
-    
-    <script>
-        var pilih = document.getElementById("barang");
-        var tambah = document.getElementById("add");
-        var hapus = document.getElementById("delete");
-        var total = document.getElementById("jumlahKeseluruhan");
-        
-        document.getElementById("jumlah").value = "";
-
-        
-
-
-        pilih.addEventListener('click', function(){
-            
-            var nilai = document.getElementById("barang").value;
-            var jumlah = document.getElementById("jumlah").value;
-            var x = document.getElementById("x");
-            x.value = nilai;
-           
-           
-        });
-        
-        tambah.addEventListener('click', function(){
-            var daftarPesanan = document.getElementById("daftarPesanan"); //parent
-            var namaBarang = document.querySelectorAll("#barang option");
-            var nilai = document.getElementById("barang").value;
-            var jumlah = document.getElementById("jumlah").value;
-            var harga = document.getElementById("x").value;
-            var totalKeseluruhan = document.getElementById("totalSementara");
-            
-
-            
-
-            var NewRow = daftarPesanan.insertRow(-1); 
-            var Newcell1 = NewRow.insertCell(0); 
-            var Newcell2 = NewRow.insertCell(1);
-            var Newcell3 = NewRow.insertCell(2);
-            var Newcell4 = NewRow.insertCell(3);
-            
-
-            
-            for(let i = 0; i < namaBarang.length; i++){
-                if(nilai === namaBarang[i].value){
-                    // insert new row. 
-                    Newcell1.innerHTML = namaBarang[i].innerHTML;
-                    Newcell2.innerHTML = nilai;
-                    Newcell3.innerHTML = jumlah;
-                    Newcell4.innerHTML = harga*jumlah;
-                    Newcell4.value = harga*jumlah;
-                }
-                
-            } 
-            calculateTotal()
-            
-        });
-        
-        hapus.addEventListener('click', function() { 
-            var totalKeseluruhan = document.getElementById("totalSementara");
-            // delete row (index-0).             
-            /* var nilai = totalKeseluruhan.value;
-
-                    nilai -= Number(daftarPesanan.children[i].children[3].innerText)
-                    totalKeseluruhan.value = nilai; */
-                    
-            
-            document.getElementById("daftarPesanan").deleteRow(-1); 
-            calculateTotal()
-
-        }); 
-       
-        var calculateTotal = () => {
-            var daftarPesanan = document.getElementById("daftarPesanan");
-            var totalKeseluruhan = document.getElementById("totalSementara");
-            var nilai = 0;
-            for (var i = 0; i < daftarPesanan.children.length; i++){
-                nilai += Number(daftarPesanan.children[i].children[3].innerText)
-            }
-            totalKeseluruhan.value = nilai;
-        }
-      
-
-        total.addEventListener('click', function(){
-            console.log('asd')
-            var total = document.getElementById("totalSementara");
-            var nilaiDiskon = document.getElementById("diskon");
-            var totalKeseluruhan = document.getElementById("sisa");
-            if (nilaiDiskon.value == 0) {
-                totalKeseluruhan.value = Number(total.value)
-            } else {
-                totalKeseluruhan.value = (Number(total.value) * nilaiDiskon.value) / 100;
-            }
-
-            
-
-        });
-    </script>
+        </footer>
+    </div>        
+<script src="script.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
