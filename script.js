@@ -61,13 +61,21 @@ total.addEventListener('click', function() {
     var nilaiDiskon = document.getElementById("diskon");
     var totalKeseluruhan = document.getElementById("sisa");
     var uang = document.getElementById("jumlah-uang");
-    var nilaiDiskon ;
-    if (nilaiDiskon.value < 1) {
-        totalKeseluruhan.value = Number(total.value)
+    var nilaiDiskon = document.getElementById("diskon");
+    var kembalian = document.getElementById("kembalian");
+    var totalSementara = 0;
+    if (nilaiDiskon.value !== null) {
+        nilaiDiskon = (total.value * nilaiDiskon.value) / 100; 
+        totalSementara = total.value - nilaiDiskon;
+    }  else {
+        totalKeseluruhan.value = total.value;
+    }
+    if (uang.value !== "") {
+        totalKeseluruhan.value = uang.value - totalSementara ;
+        kembalian.value = uang.value - totalKeseluruhan.value;
     } else {
-        nilaiDiskon = (Number(total.value) * nilaiDiskon.value) / 100;
-        totalKeseluruhan.value = Number(total.value) - nilaiDiskon - uang;
-    }         
+        alert("silahkan masukkan uang");
+    }   
 });
 
 var calculateTotal = () => {

@@ -33,6 +33,10 @@ nav .logo {
     margin: 20px 0;
 }
 
+.listItem{
+    border: 1px solid #ccc;
+    min-height: 400px;
+}
 
 
 
