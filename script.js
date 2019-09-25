@@ -63,15 +63,15 @@ total.addEventListener('click', function() {
     var uang = document.getElementById("jumlah-uang");
     var nilaiDiskon = document.getElementById("diskon");
     var kembalian = document.getElementById("kembalian");
-    var totalSementara = 0;
-    if (nilaiDiskon.value !== null) {
+    // var totalSementara = 0;
+    if (nilaiDiskon.value !== "") {
         nilaiDiskon = (total.value * nilaiDiskon.value) / 100; 
-        totalSementara = total.value - nilaiDiskon;
+        // totalSementara = total.value - nilaiDiskon;
+        totalKeseluruhan.value = total.value - nilaiDiskon ;
     }  else {
-        totalKeseluruhan.value = total.value;
+        totalKeseluruhan.value = total.value
     }
     if (uang.value !== "") {
-        totalKeseluruhan.value = uang.value - totalSementara ;
         kembalian.value = uang.value - totalKeseluruhan.value;
     } else {
         alert("silahkan masukkan uang");
